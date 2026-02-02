@@ -62,8 +62,8 @@ jobs:
           terraform plan -var-file=../${{ inputs.environment }}/terraform.tfvars -out=tfplan
         continue-on-error: false
 
-      # - name: Terraform Apply
-      #   id: apply
-      #   run: |
-      #     cd ${{ env.TF_FOLDER }}
-      #     terraform apply -auto-approve tfplan
+      - name: Terraform Apply
+        id: apply
+        run: |
+          cd ${{ env.TF_FOLDER }}
+          terraform apply -auto-approve tfplan

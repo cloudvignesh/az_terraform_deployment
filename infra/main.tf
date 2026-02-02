@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.14.4"
+  required_version = "1.13.2"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -17,6 +17,7 @@ terraform {
 
 provider "azurerm" {
   features {}
+  subscription_id = "d102fa39-6771-4629-94e2-e6847560fbae"
   resource_provider_registrations = "none"
 }
 
