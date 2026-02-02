@@ -1,26 +1,25 @@
 name: 'terraform-azure-deployment'
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       environment:
         description: 'Environment to deploy to'
         required: true
-        default: 'dev'
+        default: 'DEV'
         type: choice
         options:
-          - dev
-          - qa
-          - prod
+          - DEV
+          - QA
+          - PROD
 
 run-name: "${{ github.ref_name }}.${{ github.sha }}.${{ github.workflow }}."
 
 env:
-  TF_VERSION: '1.7.4'
-  SUB_ID: ${{ secrets.AZURE_${{ inputs.environment }}_SUBSCRIPTION_ID }}
-  ARM_CLIENT_ID: ${{ secrets.AZURE_${{ inputs.environment }}_CLIENT_ID }}
-  ARM_CLIENT_SECRET: ${{ secrets.AZURE_${{ inputs.environment }}_CLIENT_SECRET }}
+  TF_VERSION: '1.14.4'
+  SUB_ID: ${{ secrets[format('AZURE_{0}_SUBSCRIPTION_ID', inputs.environment)] }}
+  ARM_CLIENT_ID: ${{ secrets[format('AZURE_{0}_CLIENT_ID', inputs.environment)] }}
+  ARM_CLIENT_SECRET: ${{ secrets[format('AZURE_{0}_CLIENT_SECRET', inputs.environment)] }}
   ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   ARM_USE_CLI: false
   TF_FOLDER: 'infra'
