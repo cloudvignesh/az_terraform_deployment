@@ -22,7 +22,7 @@ provider "azurerm" {
 
 # Primary Resource Group
 module "resource_group" {
-  source   = "./modules/resource-group"
+  source   = "../modules/resource-group"
   name     = var.primary_rg_name
   location = var.location
   tags     = var.tags
@@ -32,7 +32,7 @@ module "resource_group" {
 # Note: This module would typically be in the MC_ resource group created by AKS
 # For manual creation, we create it in primary RG and reference in AKS
 module "network" {
-  source              = "./modules/network"
+  source              = "../modules/network"
   vnet_name           = var.vnet_name
   location            = var.location
   resource_group_name = module.resource_group.name
@@ -53,7 +53,7 @@ module "network" {
 
 # Managed Identity for ALB
 module "alb_identity" {
-  source              = "./modules/managed-identity"
+  source              = "../modules/managed-identity"
   name                = var.alb_identity_name
   location            = var.location
   resource_group_name = module.resource_group.name
@@ -62,7 +62,7 @@ module "alb_identity" {
 
 # Container Registry
 module "container_registry" {
-  source              = "./modules/container-registry"
+  source              = "../modules/container-registry"
   name                = var.acr_name
   location            = var.location
   resource_group_name = module.resource_group.name
@@ -73,7 +73,7 @@ module "container_registry" {
 
 # AKS Cluster
 module "aks_cluster" {
-  source              = "./modules/aks"
+  source              = "../modules/aks"
   name                = var.aks_cluster_name
   location            = var.location
   resource_group_name = module.resource_group.name
@@ -108,7 +108,7 @@ module "aks_cluster" {
 
 # Application Gateway for Containers
 module "application_gateway" {
-  source              = "./modules/application-gateway"
+  source              = "../modules/application-gateway"
   name                = var.alb_name
   location            = var.location
   resource_group_name = module.resource_group.name
