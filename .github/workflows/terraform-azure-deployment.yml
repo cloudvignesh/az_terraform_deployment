@@ -6,12 +6,12 @@ on:
       environment:
         description: 'Environment to deploy to'
         required: true
-        default: 'DEV'
+        default: 'dev'
         type: choice
         options:
-          - DEV
-          - QA
-          - PROD
+          - dev
+          - qa
+          - prod
 
 run-name: "${{ github.ref_name }}.${{ github.sha }}.${{ github.workflow }}."
 
