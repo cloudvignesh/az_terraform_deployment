@@ -1,0 +1,42 @@
+primary_rg_name   = "three-tier-application"
+location          = "centralindia"
+alb_identity_name = "azure-alb-identity"
+acr_name          = "threetierapp"
+acr_sku           = "Basic"
+acr_admin_enabled = false
+aks_cluster_name  = "webapp-k8s-cluster"
+aks_dns_prefix    = "webapp-k8s"
+kubernetes_version = "1.27"
+aks_node_pool_name = "nodepool1"
+aks_node_count    = 3
+aks_vm_size       = "Standard_DS2_v2"
+aks_os_disk_size_gb = 30
+aks_enable_auto_scaling = true
+aks_min_count     = 1
+aks_max_count     = 5
+aks_identity_type = "SystemAssigned"
+aks_network_plugin = "azure"
+aks_network_policy = "azure"
+aks_service_cidr  = "10.0.0.0/16"
+aks_dns_service_ip = "10.0.0.10"
+aks_load_balancer_sku = "standard"
+alb_name          = "alb-web-app-test"
+
+# Network Configuration
+vnet_name                              = "aks-vnet-23243803"
+vnet_address_space                     = ["10.224.0.0/12"]
+nsg_name                               = "aks-agentpool-23243803-nsg"
+aks_subnet_name                        = "aks-subnet"
+aks_subnet_address_prefix              = "10.224.0.0/16"
+aks_appgateway_subnet_name             = "aks-appgateway"
+aks_appgateway_subnet_address_prefix   = "10.238.0.0/24"
+aks_virtualkubelet_subnet_name         = "aks-virtualkubelet"
+aks_virtualkubelet_subnet_address_prefix = "10.239.0.0/16"
+subnet_alb_name                        = "subnet-alb"
+subnet_alb_address_prefix              = "10.225.0.0/24"
+
+tags = {
+  Environment = "Production"
+  ManagedBy   = "Terraform"
+  Project     = "ThreeTierApp"
+}
