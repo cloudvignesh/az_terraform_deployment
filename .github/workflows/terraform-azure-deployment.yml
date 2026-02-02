@@ -43,6 +43,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Set subscription ID
+        run: |
+          cd ${{ env.TF_FOLDER }}
+          SUBSCRIPTION_ID=${{ env.SUB_ID }}
+          echo "ARM_SUBSCRIPTION_ID=$SUBSCRIPTION_ID" >> $GITHUB_ENV
+
       - name: Terraform Init
         id: init
         run: |
