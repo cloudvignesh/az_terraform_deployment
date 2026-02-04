@@ -404,4 +404,4 @@ az storage blob delete \
 **Note**: This is a portfolio/learning project demonstrating Infrastructure as Code best practices. For production use, additional security hardening, monitoring, and backup strategies should be implemented.
 
 ---
-**Built with ❤️ by [cloudvignesh](https://github.com/cloudvignesh)**
+**Built by [cloudvignesh](https://github.com/cloudvignesh)**
